@@ -16,6 +16,7 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -35,37 +36,35 @@ class BeerControllerTest
 
 
     @Test
-    void getBeerById() throws Exception
-    {
-        given(beerService.findBeerById(any())).willReturn(getValidBeerDto());
+    void getBeerById() throws Exception {
 
-        mockMvc.perform(get("/api/v1/beer/" + UUID.randomUUID().toString())
-            .accept(MediaType.APPLICATION_JSON))
+        given(beerService.getById(any(), anyBoolean())).willReturn(getValidBeerDto());
+
+        mockMvc.perform(get("/api/v1/beer/" + UUID.randomUUID().toString()).accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
+
     }
 
     @Test
-    void saveBeer() throws Exception
-    {
+    void saveNewBeer() throws Exception {
+
         BeerDto beerDto = getValidBeerDto();
         String beerDtoJson = objectMapper.writeValueAsString(beerDto);
 
         given(beerService.saveNewBeer(any())).willReturn(getValidBeerDto());
 
-        mockMvc.perform(post("/api/v1/beer")
+        mockMvc.perform(post("/api/v1/beer/")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(beerDtoJson))
                 .andExpect(status().isCreated());
-
     }
 
     @Test
-    void updateBeerById() throws Exception
-    {
+    void updateBeerById() throws Exception {
+        given(beerService.updateBeer(any(), any())).willReturn(getValidBeerDto());
+
         BeerDto beerDto = getValidBeerDto();
         String beerDtoJson = objectMapper.writeValueAsString(beerDto);
-
-        given(beerService.updateBeer(any(), any())).willReturn(getValidBeerDto());
 
         mockMvc.perform(put("/api/v1/beer/" + UUID.randomUUID().toString())
                 .contentType(MediaType.APPLICATION_JSON)
@@ -73,12 +72,11 @@ class BeerControllerTest
                 .andExpect(status().isNoContent());
     }
 
-    BeerDto getValidBeerDto()
-    {
+    BeerDto getValidBeerDto(){
         return BeerDto.builder()
-                .beerName("Corona Extra")
-                .beerStyle(BeerStyleEnum.GOSE)
-                .price(new BigDecimal("20.22"))
+                .beerName("My Beer")
+                .beerStyle(BeerStyleEnum.ALE)
+                .price(new BigDecimal("2.99"))
                 .upc(BeerLoader.BEER_1_UPC)
                 .build();
     }
