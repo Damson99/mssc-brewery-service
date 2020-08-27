@@ -1,4 +1,4 @@
-package brewery.service.service;
+package brewery.service.service.brewing;
 
 import brewery.service.config.JmsConfig;
 import brewery.service.domain.Beer;
@@ -35,7 +35,7 @@ public class BrewingService
             log.debug("Min Onhand is: " + beer.getMinOnHand());
             log.debug("Inventory is: " + invQQH);
             if(beer.getMinOnHand() >= invQQH)
-                jmsTemplate.convertAndSend(JmsConfig.BREWING_REQUEST, new BrewBeerEvent(beerMapper.beerToBeerDto(beer)));
+                jmsTemplate.convertAndSend(JmsConfig.BREWING_REQUEST_QUEUE, new BrewBeerEvent(beerMapper.beerToBeerDto(beer)));
         });
     }
 }
