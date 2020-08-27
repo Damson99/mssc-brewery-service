@@ -9,6 +9,8 @@ import org.springframework.jms.support.converter.MessageType;
 @Configuration
 public class JmsConfig
 {
+    public static final String BREWING_REQUEST = "BREWING_REQUEST";
+
     @Bean
     public MessageConverter jacksonJmsMessageConverter()
     {

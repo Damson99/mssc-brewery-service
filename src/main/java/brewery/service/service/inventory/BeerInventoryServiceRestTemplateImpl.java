@@ -25,11 +25,13 @@ public class BeerInventoryServiceRestTemplateImpl implements BeerInventoryServic
     private String beerInventoryServiceHost;
 
 
-    public void setBeerInventoryServiceHost(String beerInventoryServiceHost) {
+    public void setBeerInventoryServiceHost(String beerInventoryServiceHost)
+    {
         this.beerInventoryServiceHost = beerInventoryServiceHost;
     }
 
-    public BeerInventoryServiceRestTemplateImpl(RestTemplateBuilder restTemplateBuilder) {
+    public BeerInventoryServiceRestTemplateImpl(RestTemplateBuilder restTemplateBuilder)
+    {
         this.restTemplate = restTemplateBuilder.build();
     }
 
@@ -45,11 +47,7 @@ public class BeerInventoryServiceRestTemplateImpl implements BeerInventoryServic
                         }, beerId);
 
         //sum from inventory list
-        Integer onHand = Objects.requireNonNull(responseEntity.getBody())
-                .stream()
-                .mapToInt(BeerInventoryDto::getQuantityOnHand)
-                .sum();
-
-        return onHand;
+        return Objects.requireNonNull(responseEntity.getBody())
+                .stream().mapToInt(BeerInventoryDto::getQuantityOnHand).sum();
     }
 }
