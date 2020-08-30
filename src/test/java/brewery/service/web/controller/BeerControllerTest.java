@@ -1,9 +1,10 @@
 package brewery.service.web.controller;
 
-import brewery.service.bootstrap.BeerLoader;
-import brewery.service.service.BeerService;
-import brewery.service.web.model.BeerDto;
-import brewery.service.web.model.BeerStyleEnum;
+import mssc.beer.bootstrap.BeerLoader;
+import mssc.beer.service.BeerService;
+import mssc.beer.web.controller.BeerController;
+import mssc.model.BeerDto;
+import mssc.model.BeerStyleEnum;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
