@@ -27,8 +27,6 @@ public class BrewingService
     @Scheduled(fixedRate = 5000)
     public void checkForLowInventory()
     {
-        System.out.println("ASDASDASDASD");
-
         List<Beer> beerList = beerRepository.findAll();
         beerList.forEach(beer ->
         {
