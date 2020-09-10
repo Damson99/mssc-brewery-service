@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/")
 @RequiredArgsConstructor
 public class BeerController
 {
@@ -24,7 +24,7 @@ public class BeerController
     private static final Integer DEFAULT_PAGE_SIZE = 25;
 
 
-    @GetMapping(produces =  { "application/json" }, path = "/beer")
+    @GetMapping(produces =  { "application/json" }, path = "beer")
     public ResponseEntity<BeerPagedList> listBeers(@RequestParam(value = "pageNumber", required = false) Integer pageNumber,
                                                    @RequestParam(value = "pageSize", required = false) Integer pageSize,
                                                    @RequestParam(value = "beerName", required = false) String beerName,
