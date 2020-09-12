@@ -9,6 +9,10 @@
 		<version>1.0.17</version>
 	</parent>
 
+	<properties>
+		<feign.version>2.2.2.RELEASE</feign.version>
+	</properties>
+
 	<groupId>brewery</groupId>
 	<artifactId>service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -18,7 +22,8 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+			<version>${feign.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
