@@ -17,7 +17,7 @@ import java.util.UUID;
 @Service
 public class BeerInventoryServiceFeign implements BeerInventoryService
 {
-    private final InventoryServiceClientFeign serviceClientFeign;
+    private final InventoryServiceFeignClient serviceClientFeign;
 
     @Override
     public Integer getOnhandInventory(UUID beerId)
