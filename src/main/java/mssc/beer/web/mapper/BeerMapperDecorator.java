@@ -5,12 +5,25 @@ import mssc.beer.domain.Beer;
 import mssc.beer.service.inventory.BeerInventoryService;
 import mssc.model.BeerDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 
-@RequiredArgsConstructor
 public abstract class BeerMapperDecorator implements BeerMapper
 {
     private BeerInventoryService beerInventoryService;
     private BeerMapper beerMapper;
+
+    @Autowired
+    public void setBeerInventoryService(BeerInventoryService beerInventoryService)
+    {
+        this.beerInventoryService = beerInventoryService;
+    }
+
+    @Autowired
+    public void setBeerMapper(BeerMapper beerMapper)
+    {
+        this.beerMapper = beerMapper;
+    }
+
 
     @Override
     public Beer beerDtoToBeer(BeerDto beerDto)

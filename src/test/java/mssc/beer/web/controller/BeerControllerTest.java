@@ -1,4 +1,4 @@
-package brewery.service.web.controller;
+package mssc.beer.web.controller;
 
 import mssc.beer.bootstrap.BeerLoader;
 import mssc.beer.service.BeerService;
