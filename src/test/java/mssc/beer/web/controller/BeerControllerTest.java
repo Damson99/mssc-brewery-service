@@ -2,7 +2,6 @@ package mssc.beer.web.controller;
 
 import mssc.beer.bootstrap.BeerLoader;
 import mssc.beer.service.BeerService;
-import mssc.beer.web.controller.BeerController;
 import mssc.model.BeerDto;
 import mssc.model.BeerStyleEnum;
 import com.fasterxml.jackson.databind.ObjectMapper;

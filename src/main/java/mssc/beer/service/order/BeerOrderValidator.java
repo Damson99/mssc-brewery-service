@@ -3,7 +3,7 @@ package mssc.beer.service.order;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import mssc.beer.repository.BeerRepository;
-import mssc.model.BeerOrderDto;
+import mssc.model.event.BeerOrderDto;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.atomic.AtomicInteger;

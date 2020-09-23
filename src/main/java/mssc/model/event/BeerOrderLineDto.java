@@ -1,4 +1,4 @@
-package mssc.model;
+package mssc.model.event;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -15,7 +15,8 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class BeerOrderLineDto {
+public class BeerOrderLineDto
+{
 
     @JsonProperty("id")
     private UUID id = null;
